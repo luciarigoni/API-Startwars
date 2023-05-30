@@ -70,10 +70,25 @@ export class AppComponent implements OnInit {
   }
 
  openDialog() {
-  this.dialogRef.open(PopUpComponent, {
-    data: {
-      name: 'Samuel'
-    }
-  });
- }
+//   this.dialogRef.open(PopUpComponent, {
+//     data: {
+//       name: 'Samuel'
+//     }
+//   });
+//  }
+  this.starwarsService.getallStarwars('https://swapi.dev/api/people').subscribe(
+      (resposta) => {
+        const data = {
+          eye_color: resposta.results[0].eye_color // Supondo que você queira pegar o eye_color do primeiro item da resposta
+        };
+
+        this.dialogRef.open(PopUpComponent, {
+          data: data
+        });
+      },
+      (erro) => {
+        console.log('Erro: ' + erro);
+      }
+    );
+  }
 }

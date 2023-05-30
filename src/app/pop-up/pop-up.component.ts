@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pop-up',
@@ -7,11 +7,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./pop-up.component.scss']
 })
 export class PopUpComponent implements OnInit {
-
-  firstName: string;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { name: string}) {
-    this.firstName = data.name;
+  eyeColor: string;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { eye_color: string}, public dialogRef: MatDialogRef<PopUpComponent>
+  ) {
+    this.eyeColor = data.eye_color;
   }
 
   ngOnInit(): void {}
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
 }

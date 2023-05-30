@@ -15,6 +15,7 @@
       <th>Altura</th>
       <th>Massa</th>
       <th>Cor do cabelo</th>
+      <th>Cor dos olhos</th>
     </thead>
     <tbody>
       <tr *ngFor="let p of people">
@@ -22,11 +23,11 @@
         <td>{{p.height}}</td>
         <td>{{p.mass}}</td>
         <td>{{p.hair_color}}</td>
+        <td><button (click)="openDialog()">Clique aqui</button></td>
       </tr>
     </tbody>
   </table>
   <button (click)="previousPage()" [disabled]="!allStarwars.previous">Previous</button>
   <button (click)="nextPage()" [disabled]="!allStarwars.next">Next</button>
-  <button (click)="openDialog()">Press</button>
 </body>
 </html>
